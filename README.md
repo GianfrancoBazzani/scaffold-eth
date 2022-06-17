@@ -2,6 +2,7 @@
 
 # 🏗 Scaffold-ETH - 🔑 Meta transaction multi sig wallet.
 
+
 Hi, to all! The objective of this topic is to build a multisig wallet that uses meta-transactions in order to spend value contained in it. A meta-transaction is a regular Ethereum transaction which contains another transaction, the actual transaction. The actual transaction is signed by a user or a group of users and then sent to an operator, in this case the operator is the wallet contract and he is who checks the correctness of the signatures broadcast the transaction to the blockchain.
 
 ## 📚 High level aproach.
@@ -28,3 +29,31 @@ bellow is shown a schema that describes the parts of the aplication and how it i
 ## 🛠 Let's buidl!
 
 To build the aplicaton we are going to use the scaffold-eth basic project.
+
+Required: [Node](https://nodejs.org/en/) plus [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) and [Git](https://git-scm.com/downloads)
+
+```
+git clone https://github.com/scaffold-eth/scaffold-eth meta-multi-sig
+```
+```
+cd meta-multi-sig
+git checkout meta-multi-sig
+yarn install
+yarn start
+```
+
+> in a second terminal window, start your 📱 frontend:
+
+```
+cd simple-nextjs-nft-example
+yarn chain
+```
+
+> in a third terminal window, 🛰 deploy your contract:
+
+```
+cd simple-nextjs-nft-example
+yarn deploy --network NETWORK_OF_CHOICE (localhost, kovan, rinkeby, mainnet)
+```
+
+📱 Open http://localhost:3000 to see the app
