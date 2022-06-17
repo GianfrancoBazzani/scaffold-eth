@@ -20,7 +20,6 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     });
 
     console.log("\n\n MetaMultiSigWallet deployment success! ✅ \n");
-    console.log(`\n\n 💵 💵 💵 Funding chest\n`);
 
     //Get deployed contract Object
     const MetaMultiSigWallet = await ethers.getContract("MetaMultiSigWallet", deployer);
@@ -29,6 +28,7 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     const signerDeployer = await ethers.provider.getSigner(deployer);
 
     /* Uncomment this block to fund the chest
+    console.log(`\n\n 💵 💵 💵 Funding chest\n`);
     //Send funding transaction
     const Txresult = await signerDeployer.sendTransaction({ to: MetaMultiSigWallet.address, value: ethers.utils.parseEther("10") });
 

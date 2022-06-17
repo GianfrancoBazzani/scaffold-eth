@@ -1,5 +1,3 @@
-# Based on -> 
-
 # 🏗 Scaffold-ETH - 🔑 Meta transaction multi sig wallet.
 
 
@@ -28,7 +26,7 @@ bellow is shown a schema that describes the parts of the aplication and how it i
 
 ## 🛠 Let's buidl!
 
-To build the aplicaton we are going to use the scaffold-eth basic project.
+We are going to use the scaffold-eth project.
 
 Required: [Node](https://nodejs.org/en/) plus [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
@@ -53,7 +51,16 @@ yarn chain
 
 ```
 cd simple-nextjs-nft-example
-yarn deploy --network NETWORK_OF_CHOICE (localhost, kovan, rinkeby, mainnet)
+yarn deploy
 ```
 
 📱 Open http://localhost:3000 to see the app
+
+### Chest main pannel
+
+Inside the main tab of the app "AppHome" in first place we found the chest pannel, here we bla bla bbla
+
+# ------------chest image
+
+> You can take the onwership of the chest during deployment editing the deployment script  /packages/hardhat/deploy/00_deploy_meta_multi_sig_wallet.js
+
