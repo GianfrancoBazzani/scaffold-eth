@@ -31,6 +31,7 @@ import deployedContracts from "./contracts/hardhat_contracts.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
+import { useEventListener } from "eth-hooks/events/useEventListener";
 
 const { ethers } = require("ethers");
 /*
@@ -169,6 +170,10 @@ function App(props) {
   // keep track of a variable from the contract in the local React state:
   const purpose = useContractReader(readContracts, "YourContract", "purpose");
 
+  // 📟 Listen for broadcast events
+  const DepositEvents = useEventListener(readContracts, "MetaMultiSigWallet", "Deposit", localProvider, 1);
+  const ExecuteTransactionEvents = useEventListener(readContracts, "MetaMultiSigWallet", "ExecuteTransaction", localProvider, 1);
+  const OwnerEvents = useEventListener(readContracts, "MetaMultiSigWallet", "Owner", localProvider, 1);
   /*
   const addressFromENS = useResolveName(mainnetProvider, "austingriffith.eth");
   console.log("🏷 Resolved austingriffith.eth as:",addressFromENS)
@@ -310,7 +315,22 @@ function App(props) {
       <Switch>
         <Route exact path="/">
           {/* pass in any web3 props to this Home component. For example, yourLocalBalance */}
-          <Home yourLocalBalance={yourLocalBalance} readContracts={readContracts} />
+          <Home
+            yourLocalBalance={yourLocalBalance}
+            readContracts={readContracts}
+            writeContracts={writeContracts}
+            mainnetProvider={mainnetProvider}
+            price={price}
+            DepositEvents={DepositEvents}
+            ExecuteTransactionEvents={ExecuteTransactionEvents}
+            OwnerEvents={OwnerEvents}
+            blockExplorer={blockExplorer}
+            localProvider={localProvider}
+            contractConfig={contractConfig}
+            chainId={localChainId}
+            userProviderAndSigner={userProviderAndSigner}
+
+          />
         </Route>
         <Route exact path="/debug">
           {/*
@@ -320,13 +340,14 @@ function App(props) {
             */}
 
           <Contract
-            name="YourContract"
+            name="MetaMultiSigWallet"
             price={price}
             signer={userSigner}
             provider={localProvider}
             address={address}
             blockExplorer={blockExplorer}
             contractConfig={contractConfig}
+
           />
         </Route>
         <Route path="/hints">
