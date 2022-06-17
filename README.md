@@ -58,9 +58,68 @@ yarn deploy
 
 ### Chest main pannel
 
-Inside the main tab of the app "AppHome" in first place we found the chest pannel, here we bla bla bbla
+Inside the main tab of the app "AppHome" in first place we found the chest pannel  that shows the stats of the multisig, here we bla bla bbla
 
 # ------------chest image
 
-> You can take the onwership of the chest during deployment editing the deployment script  /packages/hardhat/deploy/00_deploy_meta_multi_sig_wallet.js
+> You can take the onwership of the chest during deployment editing the deployment script  /packages/hardhat/deploy/00_deploy_meta_multi_sig_wallet.js.
+
+# ------------setting owner image (remember to comment)
+
+> Also you can fund the chest uncommenting the funding lines in the same script.
+
+# ------------funding image
+
+now that you have your multisig founded and the ownership of the chest you can send metatx to it you can see now the funding transaction in founding events, checkout how this work in .... .
+
+### sign and execute a TX
+with a contract of the chest created your are able to send metaTx to the contract, but it hash to be signed in orther that whatever it is the signer of metaTX the contract can verify who has signed the real tx
+
+> Add  the tx info tn the TX hash calculator and claculate the hash let the calldata field as 0x we going to explain latter about it
+
+# ------------- Hash calculator image
+
+> Sign the Tx in the signer checkout how the signer works in the react app
+
+# -------------- Hash signer image
+
+
+> Now go to the tx executer 
+
+# -------------- Tx executer image
+
+you will see that the reciver wallet of funds has recived the funds from the chest
+
+###  Ownership control
+
+introducing logic in the contract you are in grade of modify the onwers and the signatures needed to ... bla bla bla
+
+> Edit /packages/hardhat/contracts/MetaMultiSigWallet.sol and uncoment the acces control functions
+
+# -------- enable ownership control (remember to comment the contract part)
+
+> 🛰 deploy your contract again:
+
+```
+yarn deploy --reset
+```
+
+now you can send a metaTx to de contract thath contains a calldata who defines wat function call the real TX.
+
+> 🔥 We'll use burner wallets on by opening a new incognito window and navigate it to http://localhost:3000. You'll notice it has a new wallet address in the top right. whe are going to add this wallet as signer.
+
+# ----------- burnable wallet image
+
+> copy this addres and return to normal browser window iinput addsigner  funcbla bla bal checkout how the function woek 
+
+# ------------ calculate call data image
+> repeat the Sign and execute TX steps using the calculated calldata
+
+# --------- image of tx hash generation with calldata
+
+You can now see in the panel that a incognito wallet addres is added as sginer, you can use this procediment ot execute any fucntion of any contract
+
+# --------- image panel with new signer
+
+
 

@@ -47,7 +47,8 @@ contract MetaMultiSigWallet {
         }
         chainId = _chainId;
     }
-    
+    /*
+    //uncomment this block to enable ownership control functions.
     function addSigner(address newSigner, uint256 newSignaturesRequired) public onlySelf {
         require(newSigner != address(0), "addSigner: zero address");
         require(!isOwner[newSigner], "addSigner: owner not unique");
@@ -75,7 +76,7 @@ contract MetaMultiSigWallet {
         require(newSignaturesRequired > 0, "updateSignaturesRequired: must be non-zero sigs required");
         signaturesRequired = newSignaturesRequired;
     }
-
+    */
     function executeTransaction(address payable to, uint256 value, bytes memory data, bytes[] memory signatures ) public returns (bytes memory) {
         require(isOwner[msg.sender], "executeTransaction: only owners can execute");
         bytes32 _hash = getTransactionHash(nonce, to, value, data);

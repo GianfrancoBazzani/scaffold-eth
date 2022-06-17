@@ -26,11 +26,11 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
 
     //get deployer signer
     const signerDeployer = await ethers.provider.getSigner(deployer);
-
-    /* Uncomment this block to fund the chest
+    /*
+    //uncomment this block to fund the chest
     console.log(`\n\n 💵 💵 💵 Funding chest\n`);
     //Send funding transaction
-    const Txresult = await signerDeployer.sendTransaction({ to: MetaMultiSigWallet.address, value: ethers.utils.parseEther("10") });
+    const Txresult = await signerDeployer.sendTransaction({ to: MetaMultiSigWallet.address, value: ethers.utils.parseEther("10") }); 
 
     if (Txresult) {
         console.log("\n\n Funding transaction successful! ✅ \n");
